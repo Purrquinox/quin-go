@@ -1,5 +1,6 @@
 package types
 
+// AI Data
 type AIData struct {
 	Name        string    `json:"name"`
 	Version     int       `json:"version"`
@@ -77,6 +78,7 @@ type Friend struct {
 	Description string `json:"description"`
 }
 
+// Secrets 
 type Secrets struct {
 	Discord      DiscordSecret   `json:"discord"`
 	Revolt       RevoltSecret    `json:"revolt"`
