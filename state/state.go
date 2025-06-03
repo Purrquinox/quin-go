@@ -2,6 +2,7 @@ package state
 
 import (
 	"context"
+	"net/http"
 	"os"
 	"quin/genconfig"
 	"quin/types"
@@ -9,6 +10,7 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/go-playground/validator/v10/non-standard/validators"
 	"github.com/infinitybotlist/eureka/snippets"
+	openai "github.com/sashabaranov/go-openai"
 	"go.uber.org/zap"
 	"gopkg.in/yaml.v3"
 )
@@ -19,6 +21,7 @@ var (
 	Logger    *zap.Logger
 	Context   = context.Background()
 	Validator = validator.New()
+	OpenAI    *openai.Client
 )
 
 func Setup() {
@@ -53,4 +56,27 @@ func Setup() {
 	if err != nil {
 		panic("Failed to parse config file: " + err.Error())
 	}
+
+	// Initalize OpenAI client
+	config := openai.DefaultConfig("")
+	config.BaseURL = "https://openrouter.ai/api/v1"
+	config.HTTPClient = &http.Client{
+		Transport: &transportWithAuth{
+			apiKey: Secrets.OpenRouter.Token,
+			rt:     http.DefaultTransport,
+		},
+	}
+
+	OpenAI = openai.NewClientWithConfig(config)
+}
+
+// transportWithAuth is a custom RoundTripper to inject the Authorization header.
+type transportWithAuth struct {
+	apiKey string
+	rt     http.RoundTripper
+}
+
+func (t *transportWithAuth) RoundTrip(req *http.Request) (*http.Response, error) {
+	req.Header.Set("Authorization", "Bearer "+t.apiKey)
+	return t.rt.RoundTrip(req)
 }

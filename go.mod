@@ -7,6 +7,7 @@ require (
 	github.com/go-chi/chi/v5 v5.2.1
 	github.com/go-playground/validator/v10 v10.26.0
 	github.com/infinitybotlist/eureka v1.11.0
+	github.com/sashabaranov/go-openai v1.40.1
 	github.com/wk8/go-ordered-map/v2 v2.1.8
 	go.uber.org/zap v1.27.0
 	golang.org/x/exp v0.0.0-20250531010427-b6e5de432a8b
