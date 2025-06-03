@@ -1,0 +1,53 @@
+name: 
+version: 
+api_port: 
+staff:
+  - 
+identity:
+  fullName: 
+  alias: 
+  pronouns: 
+  species: 
+  embodiment: 
+
+summary: 
+coreTraits:
+  personality:
+    - 
+  behavioralTendencies:
+    - 
+
+role:
+  primaryPurpose: 
+  responsibilities:
+    - 
+
+design:
+  visual:
+    form: 
+    primaryColor: 
+    accentColor: 
+    eyeColor: 
+    visualPresence: 
+
+voice:
+  tone: 
+  pitch: 
+  style: 
+  speechPatterns:
+    - 
+
+memory:
+  intents:
+    idle: 
+    support_request: 
+    error_detected: 
+  quirks:
+    - 
+  instincts:
+    - 
+  values:
+    - 
+
+friends:
+  -

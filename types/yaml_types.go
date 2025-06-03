@@ -2,105 +2,105 @@ package types
 
 // AI Data
 type AIData struct {
-	Name        string    `json:"name"`
-	Version     int       `json:"version"`
-	ApiPort     int       `json:"api_port"`
-	Staff       []Staff   `json:"staff"`
-	Identity    Identity  `json:"identity"`
-	Summary     string    `json:"summary"`
-	CoreTraits  CoreTraits `json:"coreTraits"`
-	Role        Role      `json:"role"`
-	Design      Design    `json:"design"`
-	Voice       Voice     `json:"voice"`
-	Memory      Memory    `json:"memory"`
-	Friends     []Friend  `json:"friends"`
+	Name       string     `yaml:"name" validate:"required"`
+	Version    int        `yaml:"version" validate:"required"`
+	ApiPort    int        `yaml:"api_port" validate:"required"`
+	Staff      []Staff    `yaml:"staff" validate:"required"`
+	Identity   Identity   `yaml:"identity" validate:"required"`
+	Summary    string     `yaml:"summary" validate:"required"`
+	CoreTraits CoreTraits `yaml:"coreTraits" validate:"required"`
+	Role       Role       `yaml:"role" validate:"required"`
+	Design     Design     `yaml:"design" validate:"required"`
+	Voice      Voice      `yaml:"voice" validate:"required"`
+	Memory     Memory     `yaml:"memory" validate:"required"`
+	Friends    []Friend   `yaml:"friends" validate:"required"`
 }
 
 type Staff struct {
-	Name     string   `json:"name"`
-	Username string   `json:"username"`
-	DiscordID int     `json:"discord_id"`
-	Roles    []string `json:"roles"`
-	Context  []string `json:"context"`
+	Name      string   `yaml:"name" validate:"required"`
+	Username  string   `yaml:"username" validate:"required"`
+	DiscordID int      `yaml:"discord_id" validate:"required"`
+	Roles     []string `yaml:"roles" validate:"required"`
+	Context   []string `yaml:"context" validate:"required"`
 }
 
 type Identity struct {
-	FullName    string `json:"fullName"`
-	Alias       string `json:"alias"`
-	Pronouns    string `json:"pronouns"`
-	Species     string `json:"species"`
-	Embodiment  string `json:"embodiment"`
+	FullName   string `yaml:"fullName" validate:"required"`
+	Alias      string `yaml:"alias" validate:"required"`
+	Pronouns   string `yaml:"pronouns" validate:"required"`
+	Species    string `yaml:"species" validate:"required"`
+	Embodiment string `yaml:"embodiment" validate:"required"`
 }
 
 type CoreTraits struct {
-	Personality         []string `json:"personality"`
-	BehavioralTendencies []string `json:"behavioralTendencies"`
+	Personality          []string `yaml:"personality" validate:"required"`
+	BehavioralTendencies []string `yaml:"behavioralTendencies" validate:"required"`
 }
 
 type Role struct {
-	PrimaryPurpose  string   `json:"primaryPurpose"`
-	Responsibilities []string `json:"responsibilities"`
+	PrimaryPurpose   string   `yaml:"primaryPurpose" validate:"required"`
+	Responsibilities []string `yaml:"responsibilities" validate:"required"`
 }
 
 type Design struct {
-	Visual Visual `json:"visual"`
+	Visual Visual `yaml:"visual" validate:"required"`
 }
 
 type Visual struct {
-	Form            string `json:"form"`
-	PrimaryColor    string `json:"primaryColor"`
-	AccentColor     string `json:"accentColor"`
-	EyeColor        string `json:"eyeColor"`
-	VisualPresence   string `json:"visualPresence"`
+	Form           string `yaml:"form" validate:"required"`
+	PrimaryColor   string `yaml:"primaryColor" validate:"required"`
+	AccentColor    string `yaml:"accentColor" validate:"required"`
+	EyeColor       string `yaml:"eyeColor" validate:"required"`
+	VisualPresence string `yaml:"visualPresence" validate:"required"`
 }
 
 type Voice struct {
-	Tone          string   `json:"tone"`
-	Pitch         string   `json:"pitch"`
-	Style         string   `json:"style"`
-	SpeechPatterns []string `json:"speechPatterns"`
+	Tone           string   `yaml:"tone" validate:"required"`
+	Pitch          string   `yaml:"pitch" validate:"required"`
+	Style          string   `yaml:"style" validate:"required"`
+	SpeechPatterns []string `yaml:"speechPatterns" validate:"required"`
 }
 
 type Memory struct {
 	Intents struct {
-		Idle            string `json:"idle"`
-		SupportRequest  string `json:"support_request"`
-		ErrorDetected   string `json:"error_detected"`
-	} `json:"intents"`
-	Quirks   []string `json:"quirks"`
-	Instincts []string `json:"instincts"`
-	Values    []string `json:"values"`
+		Idle           string `yaml:"idle" validate:"required"`
+		SupportRequest string `yaml:"support_request" validate:"required"`
+		ErrorDetected  string `yaml:"error_detected" validate:"required"`
+	} `yaml:"intents"  validate:"required"`
+	Quirks    []string `yaml:"quirks" validate:"required"`
+	Instincts []string `yaml:"instincts" validate:"required"`
+	Values    []string `yaml:"values" validate:"required"`
 }
 
 type Friend struct {
-	Name        string `json:"name"`
-	Username    string `json:"username"`
-	Description string `json:"description"`
+	Name        string `yaml:"name" validate:"required"`
+	Username    string `yaml:"username" validate:"required"`
+	Description string `yaml:"description" validate:"required"`
 }
 
-// Secrets 
+// Secrets
 type Secrets struct {
-	Discord      DiscordSecret   `json:"discord"`
-	Revolt       RevoltSecret    `json:"revolt"`
-	X            XSecret         `json:"x"`
-	OpenRouter   OpenRouterSecret `json:"openrouter"`
+	Discord    DiscordSecret    `yaml:"discord" validate:"required"`
+	Revolt     RevoltSecret     `yaml:"revolt" validate:"required"`
+	X          XSecret          `yaml:"x" validate:"required"`
+	OpenRouter OpenRouterSecret `yaml:"openrouter" validate:"required"`
 }
 
 type DiscordSecret struct {
-	ClientID     int    `json:"client_id"`
-	ClientSecret string `json:"client_secret"`
-	BotToken     string `json:"bot_token"`
+	ClientID     int    `yaml:"client_id" validate:"required"`
+	ClientSecret string `yaml:"client_secret" validate:"required"`
+	BotToken     string `yaml:"bot_token" validate:"required"`
 }
 
 type RevoltSecret struct {
-	BotToken string `json:"bot_token"`
+	BotToken string `yaml:"bot_token" validate:"required"`
 }
 
 type XSecret struct {
-	ClientID     string `json:"client_id"`
-	ClientSecret string `json:"client_secret"`
+	ClientID     string `yaml:"client_id" validate:"required"`
+	ClientSecret string `yaml:"client_secret" validate:"required"`
 }
 
 type OpenRouterSecret struct {
-	Token string `json:"token"`
+	Token string `yaml:"token" validate:"required"`
 }
